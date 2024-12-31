@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     libcpprest-dev \
     libboost-all-dev \
     libssl-dev \
-    cmake
+    cmake \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy the source code into the container
 COPY ok_api.cpp .
@@ -23,3 +25,4 @@ EXPOSE 8080
 
 # Command to run the API when the container starts
 CMD ["./ok_api"]
+
